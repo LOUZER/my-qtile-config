@@ -51,8 +51,8 @@ myConfig = ([home + "/.config/qtile"])
 ##### keybindings #####
 keys = [
     ##### usage
-    Key([mod], "return", lazy.spawn(myTerm)),
-    Key([mod, "shift"], "return", lazy.spawn("rofi -show run")),
+    Key([mod], "Return", lazy.spawn(myTerm)),
+    Key([mod, "shift"], "Return", lazy.spawn("rofi -show run")),
     Key([mod], "c", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod], "tab", lazy.next_layout()),
