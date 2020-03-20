@@ -67,6 +67,23 @@ keys = [
     Key([mod, "control"], "f", lazy.window.toggle_floating()),
 ]
 
+##### DRAG FLOATING WINDOWS #####
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front())
+]
+
+dgroups_key_binder = None
+dgroups_app_rules = []
+main = None
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = False
+
+
 ##### workspaces and groups ######
 group_names = [
     ("Web" , {'layout' : 'monadtall'}),
@@ -90,7 +107,7 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 ##### layouts #####
 layouts = [
-    layout.max(),
+    layout.Max(),
     layout.Stack(num_stacks = 2),
     layout.MonadTall(**layout_theme),
     layout.TreeTab(
