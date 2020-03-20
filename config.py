@@ -47,18 +47,6 @@ myTerm = "alacritty"
 home_directory = ""
 myConfig = ([home + "/.config/qtile"])
 
-##### colors #####
-colors = [
-    ["#404040", "#404040"],
-    ["#999999", "#999999"],
-<<<<<<< HEAD
-    ["#ffffff", "#ffffff"]
-]
-=======
-    ["#ffffff", "#ffffff"],
-        ]
->>>>>>> bdab871157a22f39142d70a1a336268a7ada483f
-
 ##### keybindings #####
 keys = [
     ##### usage
