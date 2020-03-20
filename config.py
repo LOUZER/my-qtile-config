@@ -37,6 +37,7 @@
 
 import os, re, socket, subprocess
 from libqtile.config import Key, Screen, Group, Drag, Click
+from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from typing import List
 
