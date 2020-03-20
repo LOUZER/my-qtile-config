@@ -41,19 +41,17 @@ from libqtile import layout, bar, widget, hook
 from typing import List
 
 ##### user-preferences ####
+home = os.path.expanduser('~')
 mod = "mod4"
 myTerm = "alacritty"
-myConfig "~/.config/qtile/config.py"
+home_directory = ""
+myConfig = ([home + "/.config/qtile"])
 
 ##### colors #####
 colors = [
     ["#404040", "#404040"],
     ["#999999", "#999999"],
-    ["#ffffff", "#ffffff"],
-    [],
-    [],
-    [],
-
+    ["#ffffff", "#ffffff"]
 ]
 
 ##### keybindings #####
@@ -93,21 +91,24 @@ layout_theme = {"border_width" : 2,
                 "boder_focus" : "#cccccc",
                 "border_normal" : "#4d4d4d"}
 
+##### prompt ######
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+
 ##### layouts #####
 layouts = [
     layout.max(),
     layout.Stack(num_stacks = 2),
     layout.MonadTall(**layout_theme),
     layout.TreeTab(
-        font = "",
-        fontsize = "",
+        font = "Ubuntu-C",
+        fontsize = "14",
         sections = ["FIRST", "SECOND"],
         section_fontsize = 11,
-        bg_color = "",
-        active_bg = "",
-        active_fg = "",
-        inactive_bg = "",
-        inactive_fg = "",
+        bg_color = "#404040",
+        active_bg = "#333333",
+        active_fg = "#999999",
+        inactive_bg = "#333333",
+        inactive_fg = "#404040",
         padding_y = 6,
         sction_top = 10,
         panel_width = 200),
@@ -134,6 +135,15 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
+##### widgets #####
+widget_defaults = dict(
+    font = "Ubuntu-C",
+    fontsize = 12,
+    padding = 2,
+    backgroud = "#cccccc"
+)
+exrension_defaults = widget_defaults.copy()
+
 screens = [Screen(bottom=bar.Bar(
         [
             widget.GroupBox(),
@@ -144,3 +154,7 @@ screens = [Screen(bottom=bar.Bar(
             widget.Clock(format='%Y-%m-%d %a %I:%M %p'),],24,),),
         ]
 
+
+##### auto-start #####
+#def start_once():
+#    subprocess.call()
