@@ -93,6 +93,9 @@ group_names = [
     ("Term", {'layout' : 'monadtall'}),
     ("Rng" , {'layout' : 'monadtall'}),
 ]
+
+groups = [Group(name, **kwargs) for name, kwargs  in group_names]
+
 for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
@@ -161,6 +164,7 @@ screens = [Screen(bottom=bar.Bar(
             widget.GroupBox(),
             widget.Prompt(),
             widget.WindowName(),
+            widget.Volume()
             widget.TextBox("default config", name="default"),
             widget.Systray(),
             widget.Clock(format='%Y-%m-%d %a %I:%M %p'),],24,),),
