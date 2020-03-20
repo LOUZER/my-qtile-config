@@ -55,8 +55,9 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn("rofi -show run")),
     Key([mod], "c", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
-    Key([mod], "tab", lazy.next_layout()),
+    Key([mod], "Tab", lazy.next_layout()),
     Key([mod, "shift"], "q", lazy.shutdown()),
+    Key([mod, "control"], "l", lazy.layout.next()),
     ##### window management
     Key([mod, "control"], "k", lazy.layout.section_up()),
     Key([mod, "control"], "j", lazy.layout.section_down()),
@@ -93,7 +94,7 @@ group_names = [
     ("Rng" , {'layout' : 'monadtall'}),
 ]
 for i, (name, kwargs) in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscren()))
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
 ##### theme #####
@@ -165,7 +166,7 @@ screens = [Screen(bottom=bar.Bar(
             widget.Clock(format='%Y-%m-%d %a %I:%M %p'),],24,),),
         ]
 
-
+wmname = "LG3D"
 ##### auto-start #####
 #def start_once():
 #    subprocess.call()
