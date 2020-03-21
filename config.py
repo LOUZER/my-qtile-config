@@ -45,7 +45,6 @@ from typing import List
 home = os.path.expanduser('~')
 mod = "mod4"
 myTerm = "alacritty"
-home_directory = ""
 myConfig = ([home + "/.config/qtile"])
 
 ##### keybindings #####
@@ -67,8 +66,7 @@ keys = [
     Key([mod, "shift"], "Left", lazy.layout.shuffle_down()),
     Key([mod, "control"], "f", lazy.window.toggle_floating()),
 ]
-
-##### DRAG FLOATING WINDOWS #####
+##### mouse-usage #####
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -78,12 +76,11 @@ mouse = [
 ]
 
 dgroups_key_binder = None
-dgroups_app_rules = []
+dgroups_app_rules = []  
 main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-
 
 ##### workspaces and groups ######
 group_names = [
@@ -103,7 +100,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 ##### theme #####
 layout_theme = {"border_width" : 2,
                 "margin" : 3,
-                "boder_focus" : "#cccccc",
+                "border_focus" : "#cccccc",
                 "border_normal" : "#4d4d4d"}
 
 ##### prompt ######
@@ -126,7 +123,7 @@ layouts = [
         inactive_fg = "#404040",
         padding_y = 6,
         sction_top = 10,
-        panel_width = 200),
+        panel_width = 150),
     layout.Floating(**layout_theme)
 ]
 
@@ -155,7 +152,7 @@ widget_defaults = dict(
     font = "Ubuntu-C",
     fontsize = 12,
     padding = 2,
-    backgroud = "#cccccc"
+    background = "#cccccc"
 )
 exrension_defaults = widget_defaults.copy()
 
@@ -164,7 +161,7 @@ screens = [Screen(bottom=bar.Bar(
             widget.GroupBox(),
             widget.Prompt(),
             widget.WindowName(),
-            widget.Volume()
+            widget.Volume(),
             widget.TextBox("default config", name="default"),
             widget.Systray(),
             widget.Clock(format='%Y-%m-%d %a %I:%M %p'),],24,),),
@@ -172,5 +169,6 @@ screens = [Screen(bottom=bar.Bar(
 
 wmname = "LG3D"
 ##### auto-start #####
+#@hook.subscribe.startup_once
 #def start_once():
 #    subprocess.call()
