@@ -113,7 +113,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.TreeTab(
         font = "Ubuntu-C",
-        fontsize = "14",
+        fontsize = "12",
         sections = ["FIRST", "SECOND"],
         section_fontsize = 11,
         bg_color = "#404040",
@@ -150,8 +150,8 @@ focus_on_window_activation = "smart"
 ##### widgets #####
 widget_defaults = dict(
     font = "Ubuntu-C",
-    fontsize = 12,
-    padding = 2,
+    fontsize = 10,
+    padding = 6,
     background = "#cccccc"
 )
 exrension_defaults = widget_defaults.copy()
@@ -159,16 +159,16 @@ exrension_defaults = widget_defaults.copy()
 screens = [Screen(bottom=bar.Bar(
         [
             widget.GroupBox(),
-            widget.Prompt(),
             widget.WindowName(),
-            widget.Volume(),
-            widget.TextBox("default config", name="default"),
             widget.Systray(),
-            widget.Clock(format='%Y-%m-%d %a %I:%M %p'),],24,),),
+            widget.Volume(),
+            widget.Battery(),
+            widget.Clock(format='%I:%M %p %d-%m-%Y %a'),],18,),),
         ]
 
 wmname = "LG3D"
+
 ##### auto-start #####
-#@hook.subscribe.startup_once
-#def start_once():
-#    subprocess.call()
+@hook.subscribe.startup_once
+def start_once():
+    subprocess.call("setxkbmap model abnt2 -layout br -variant abnt2")
